@@ -79,9 +79,7 @@ console.log(inst1 === inst2); // true
 
 singleton.js
 
-js
-Copy
-Edit
+
 class ConfigService {
   constructor() {
     this.createdAt = new Date().toISOString();
@@ -96,9 +94,6 @@ const instance = new ConfigService();
 export default instance;
 app.js
 
-js
-Copy
-Edit
 import config from './singleton.js';
 
 config.log();
