@@ -210,3 +210,23 @@ if (items.length = 0) { // Should be '==='
 | Logic Error    | ❌ No                             | Bad logic, no crash        |
 
 
+**🧰 Bonus: Global Error Handling**
+
+- Window (Browser):
+
+```js
+window.onerror = function(message, source, lineno, colno, error) {
+  console.error("Global error:", message);
+};
+
+```
+- Node.js:
+
+```js
+process.on('uncaughtException', (err) => {
+  console.error("Uncaught Exception:", err);
+});
+
+```
+
+
