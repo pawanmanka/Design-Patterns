@@ -137,6 +137,8 @@ notifyUser($adapter);
 
 ### **🧩 Example 2: Different Logger Implementations**
 
+#
+
 🎯 Target Interface
 
 ```php
