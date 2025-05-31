@@ -190,3 +190,80 @@ performLogging($adapterLogger);
 // Output: [ThirdPartyLog]: Something happened.
 
 ```
+## **🧩 Example 3: Laravel-Like File Storage Adapter**
+#
+
+Let's say you want to abstract file storage so it works with local, S3, or any other backend, even custom ones.
+
+🎯 Interface
+```php
+interface StorageInterface {
+    public function put($path, $content);
+    public function get($path);
+}
+
+```
+
+🗂️ Local File System
+
+```php
+class LocalFileSystem {
+    public function saveToFile($filename, $data) {
+        file_put_contents($filename, $data);
+    }
+
+    public function readFromFile($filename) {
+        return file_get_contents($filename);
+    }
+}
+
+```
+
+🔧 Adapter
+
+```php
+class LocalStorageAdapter implements StorageInterface {
+    protected $local;
+
+    public function __construct(LocalFileSystem $local) {
+        $this->local = $local;
+    }
+
+    public function put($path, $content) {
+        $this->local->saveToFile($path, $content);
+    }
+
+    public function get($path) {
+        return $this->local->readFromFile($path);
+    }
+}
+
+```
+
+✅ Usage
+```php
+$local = new LocalFileSystem();
+$storage = new LocalStorageAdapter($local);
+
+$storage->put('data.txt', 'Hello World!');
+echo $storage->get('data.txt');
+// Output: Hello World!
+
+```
+
+✅ Summary Table
+| Component          | Role                                   |
+| ------------------ | -------------------------------------- |
+| `Target Interface` | Expected by the client                 |
+| `Adaptee`          | Existing incompatible class            |
+| `Adapter`          | Converts Adaptee's interface to Target |
+| `Client`           | Uses the Target Interface              |
+
+
+
+
+
+✅ Benefits of Adapter Pattern in PHP
+Enables use of legacy or third-party classes
+- Promotes loose coupling.
+- Improves code reusability and testability
