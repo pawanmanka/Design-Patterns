@@ -139,7 +139,8 @@ recurse(); // InternalError: too much recursion
 ✅ Yes
 
 
-*🔄 Asynchronous Errors (Won’t Stop Execution Directly)*
+**🔄 Asynchronous Errors (Won’t Stop Execution Directly)**
+
 **Example 1: setTimeout with error**
 
 ```js
