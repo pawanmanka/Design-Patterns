@@ -1,7 +1,7 @@
 💳 1. Payment Gateway Factory
 Use Case: Support for Stripe, PayPal, Razorpay, etc.
 1. Interface
-```
+```php
 namespace App\Contracts;
 
 interface PaymentGatewayInterface {
@@ -11,7 +11,7 @@ interface PaymentGatewayInterface {
 
 2. Implementations
 
-```
+```php
 // app/Payments/StripeGateway.php
 class StripeGateway implements PaymentGatewayInterface {
     public function charge(float $amount): string {
@@ -29,7 +29,7 @@ class PaypalGateway implements PaymentGatewayInterface {
 
 3. Factory
 
-```
+```php
 class PaymentGatewayFactory {
     public static function make(string $gateway): PaymentGatewayInterface {
         return match (strtolower($gateway)) {
@@ -43,7 +43,7 @@ class PaymentGatewayFactory {
 
 4. Usage
 
-```
+```php
 $gateway = PaymentGatewayFactory::make('stripe');
 echo $gateway->charge(99.99);
 

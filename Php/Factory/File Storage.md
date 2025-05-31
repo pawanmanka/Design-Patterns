@@ -2,7 +2,7 @@
 Use Case: Store files in S3, local, or Google Drive.
 
 1. Interface
-```
+```php
 interface FileStorageInterface {
     public function upload(string $path, string $content): bool;
 }
@@ -10,7 +10,7 @@ interface FileStorageInterface {
 
 2. Implementations
 
-```
+```php
 class S3Storage implements FileStorageInterface {
     public function upload(string $path, string $content): bool {
         // Simulate upload
@@ -28,7 +28,7 @@ class LocalStorage implements FileStorageInterface {
 
 ```
 3. Factory
-```
+```php
 class StorageFactory {
     public static function make(string $disk): FileStorageInterface {
         return match (strtolower($disk)) {
@@ -43,7 +43,7 @@ class StorageFactory {
 
 4. Usage
 
-```
+```php
 $storage = StorageFactory::make('s3');
 $storage->upload('invoice.pdf', 'PDF content');
 

@@ -19,7 +19,7 @@ Not a standard GoF pattern but commonly used.
 Uses a single method to create instances based on provided input.
 
 Example : 
-
+```php
 interface Notification {
     public function send();
 }
@@ -49,14 +49,14 @@ class NotificationFactory {
 // Usage
 $notification = NotificationFactory::create('email');
 $notification->send();
-
+```
 
 2. 🏗 Factory Method Pattern (GoF Standard)
 Structure:
 
 Defines an interface for creating an object but lets subclasses decide which class to instantiate.
 
-
+```php
 abstract class NotificationFactory {
     abstract public function createNotification(): Notification;
 
@@ -81,14 +81,14 @@ class SMSNotificationFactory extends NotificationFactory {
 // Usage
 $factory = new EmailNotificationFactory();
 $factory->notify();
-
+```
 
 3. 🧰 Abstract Factory Pattern
 Structure:
 
 Factory of factories. Produces families of related objects.
 
-
+```php
 interface Button {
     public function render();
 }
@@ -149,7 +149,7 @@ function renderUI(GUIFactory $factory) {
 
 $factory = new MacFactory();
 renderUI($factory);
-
+```
 
 
 
@@ -169,18 +169,13 @@ Let me know if you want Laravel-specific examples or to integrate this pattern i
 1. Create Interfaces and Implementations
 app/Contracts/NotificationInterface.php
 
-
-<?php
+```php
 
 namespace App\Contracts;
 
 interface NotificationInterface {
     public function send(string $message): void;
 }
-app/Notifications/EmailNotification.php
-
-
-<?php
 
 namespace App\Notifications;
 
@@ -192,10 +187,6 @@ class EmailNotification implements NotificationInterface {
         echo "Sending Email: $message";
     }
 }
-app/Notifications/SmsNotification.php
-
-
-<?php
 
 namespace App\Notifications;
 
@@ -206,11 +197,11 @@ class SmsNotification implements NotificationInterface {
         echo "Sending SMS: $message";
     }
 }
+```
 2. Create the Factory Class
 app/Factories/NotificationFactory.php
 
-
-<?php
+```php
 
 namespace App\Factories;
 
@@ -227,10 +218,10 @@ class NotificationFactory {
         };
     }
 }
+```
 3. Use the Factory in a Controller
 app/Http/Controllers/NotificationController.php
-
-<?php
+```php
 
 namespace App\Http\Controllers;
 
@@ -250,14 +241,16 @@ class NotificationController extends Controller
         return response()->json(['status' => 'Notification sent']);
     }
 }
+```
 🧪 Example Request
 You can test via Postman or route:
-
+```
 POST /api/notify
 {
   "type": "sms",
   "message": "Your OTP is 123456"
 }
+```
 
 
 ✅ Benefits in Laravel

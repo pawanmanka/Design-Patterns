@@ -2,7 +2,7 @@
 Use Case: Connect to different APIs (GitHub, Twitter, etc.)
 
 1. Interface
-```
+```php
 interface ApiClientInterface {
     public function fetchData(): array;
 }
@@ -10,7 +10,7 @@ interface ApiClientInterface {
 ```
 2. Implementations
  
-```
+```php
 class GitHubClient implements ApiClientInterface {
     public function fetchData(): array {
         return ['source' => 'GitHub', 'data' => ['repo1', 'repo2']];
@@ -27,7 +27,7 @@ class TwitterClient implements ApiClientInterface {
 
 3. Factory
 
-```
+```php
 class ApiClientFactory {
     public static function make(string $api): ApiClientInterface {
         return match (strtolower($api)) {
@@ -41,7 +41,7 @@ class ApiClientFactory {
 ```
 4. Usage
 
-```
+```php
 $client = ApiClientFactory::make('github');
 print_r($client->fetchData());
 
