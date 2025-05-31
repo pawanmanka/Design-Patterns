@@ -122,7 +122,7 @@ const button = uiFactory.createButton();
 ```
 
 ✅ When to Use Factory Pattern
-`- When the object creation process is complex.
-'- When the system needs to be decoupled from how objects are created.
-' - When you need to centralize configuration or setup of objects.
+- When the object creation process is complex.
+- When the system needs to be decoupled from how objects are created.
+- When you need to centralize configuration or setup of objects.
 
