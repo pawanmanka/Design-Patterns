@@ -1,9 +1,11 @@
-***🔍 PHP Error Categories (High-Level)*** 
+**🔍 PHP Error Categories (High-Level)** 
+
 PHP errors fall under two main categories:
 1. Compile-time errors — Detected before the script runs.
 2. Run-time errors — Occur while the script is executing.
 
-*** 🧩 1. Parse Error (Syntax Error) E_PARSE *** 
+**🧩 1. Parse Error (Syntax Error) E_PARSE** 
+
 Occurs when PHP cannot understand the code due to incorrect syntax.
 
 ❓ What:
@@ -29,7 +31,8 @@ Parse error: syntax error, unexpected 'echo'...
 
 
 
-*** 🚫 2. Fatal Error (E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR) *** 
+**🚫 2. Fatal Error (E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR)** 
+
 Occurs when PHP encounters an error it cannot recover from, and script execution stops.
 
 ❓ What:
@@ -62,7 +65,8 @@ Fatal error: Uncaught Error: Call to undefined function...
 
 ```
 
-***  ⚠️ 3. Warning ( E_WARNING, E_CORE_WARNING, E_COMPILE_WARNING ) *** 
+**⚠️ 3. Warning ( E_WARNING, E_CORE_WARNING, E_COMPILE_WARNING )** 
+
 Indicates a non-fatal error. The script continues execution.
 
 ❓ What:
@@ -88,7 +92,8 @@ Warning: include(non_existent_file.php): failed to open stream...
 
 ```
 
-***  ⚠️ 4. Notice ( E_NOTICE) *** 
+**⚠️ 4. Notice ( E_NOTICE)** 
+
 Occurs when PHP encounters something that might be an error, but doesn't stop execution.
 
 ❓ What:
@@ -113,7 +118,8 @@ Notice: Undefined variable...
 
 ```
 
-***  🛑 5. Deprecated (E_DEPRECATED, E_USER_DEPRECATED) *** 
+**🛑 5. Deprecated (E_DEPRECATED, E_USER_DEPRECATED)** 
+
 Indicates that a certain function or feature is outdated and may be removed in future PHP versions.
 
 ❓ What:
@@ -138,7 +144,8 @@ Deprecated: Function split() is deprecated...
 
 ```
 
-***  🧠 6. Recoverable Error *** 
+**🧠 6. Recoverable Error** 
+
 A fatal error that can be caught using a custom error handler (rarely used).
 
 ❓ What:
@@ -150,7 +157,7 @@ Errors that would normally be fatal but can be caught by a custom handler.
 Example:
 Occurs with type hints or __toString() method errors.
 
-***  👩‍🔧 7. User-Generated Errors (E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE) *** 
+**👩‍🔧 7. User-Generated Errors (E_USER_ERROR, E_USER_WARNING, E_USER_NOTICE)** 
 
 ❓ What:
 Custom errors triggered using trigger_error().
@@ -163,7 +170,7 @@ trigger_error("This is a custom warning", E_USER_WARNING);
 Used for enforcing business logic or custom validations.
 
 
-***  🧠 8. Exception-based Errors (Throwable) *** 
+**🧠 8. Exception-based Errors (Throwable)** 
 
 Introduced in PHP 7+
 All fatal errors now implement the Throwable interface, which allows you to catch most fatal errors using try-catch.
@@ -181,7 +188,8 @@ try {
 
 
 
-***  🧰 Error Levels in PHP (Using Constants) *** 
+**🧰 Error Levels in PHP (Using Constants)** 
+
 PHP defines constants in error_reporting() for controlling error visibility:
 
 |Constant |	Description|
@@ -204,13 +212,15 @@ PHP defines constants in error_reporting() for controlling error visibility:
 |E_ALL	| All errors and warnings|
 
 
-*** 🧪 Best Practices *** 
+**🧪 Best Practices** 
+
 Use error_reporting(E_ALL) and ini_set('display_errors', 1) during development.
 - Log errors in production instead of displaying them.
 - Handle exceptions with try-catch where possible.
 
 
-***  ✅ 1. Error Handling & Logging in Plain PHP *** 
+**✅ 1. Error Handling & Logging in Plain PHP** 
+
 🛠 Enable Error Reporting (Development Only)
 
 ```php 
@@ -230,7 +240,7 @@ echo $undefinedVar;
 
 ```
 
-***  🧱 Custom Error Handler *** 
+**🧱 Custom Error Handler** 
 
 ```php 
 function customErrorHandler($errno, $errstr, $errfile, $errline) {
@@ -242,23 +252,24 @@ set_error_handler("customErrorHandler");
 
 ```
 
-***  ✅ Summary *** 
+**✅ Summary** 
 |Platform |	Logging Mechanism |	Recommended Method |
 |---------|------------------|-------------------|
 |Plain PHP	|error_log()	|Custom handler + error file|
 |Laravel	|Log::error()	|Use built-in Monolog system|
 
 
-***  🛡️ How to Handle Errors in PHP *** 
+**🛡️ How to Handle Errors in PHP** 
 
-***  ✅ Show All Errors (Dev Only) *** 
+**✅ Show All Errors (Dev Only)** 
+
 ```php 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 ```
 
-***  ✅ Log Errors (Recommended in Production) *** 
+**✅ Log Errors (Recommended in Production)** 
  
 ```php 
 ini_set('log_errors', 1);
@@ -266,7 +277,7 @@ ini_set('error_log', '/path/to/logs/php-error.log');
 
 ```
 
-***  ✅ Catching Exceptions *** 
+**✅ Catching Exceptions** 
 
 ```php 
 try {
@@ -277,7 +288,8 @@ try {
 
 ```
 
-***  ✅ Custom Error Handler *** 
+**✅ Custom Error Handler** 
+
 ```php 
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     error_log("[$errno] $errstr in $errfile on line $errline");
@@ -285,7 +297,7 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 
 ```
 
-*** ✅ Summary Chart *** 
+**✅ Summary Chart** 
 
 | Type                  | Fatal? | Catchable?     | Description                     |
 | --------------------- | ------ | -------------- | ------------------------------- |
