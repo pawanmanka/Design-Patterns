@@ -1,6 +1,4 @@
 # **Cracking the SQL Interview**
-
-
 Also known as: Wrapper
 
 **🔌 Adapter Pattern in PHP**
