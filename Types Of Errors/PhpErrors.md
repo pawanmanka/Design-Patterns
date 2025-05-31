@@ -1,4 +1,4 @@
-*** 🔍 PHP Error Categories (High-Level) *** 
+***🔍 PHP Error Categories (High-Level)*** 
 PHP errors fall under two main categories:
 1. Compile-time errors — Detected before the script runs.
 2. Run-time errors — Occur while the script is executing.
