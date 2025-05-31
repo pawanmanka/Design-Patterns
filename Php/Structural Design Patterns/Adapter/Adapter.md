@@ -105,7 +105,7 @@ class LegacyEmail {
 ```
 
 
-#🔧 Adapter
+# 🔧 Adapter
 ```php
 class EmailAdapter implements NotificationInterface {
     protected $legacyEmail;
