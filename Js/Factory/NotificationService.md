@@ -26,7 +26,7 @@ class PushNotification {
 
 2. Create the Factory
 
-```
+```js
 class NotificationFactory {
   static create(channel) {
     switch (channel.toLowerCase()) {
