@@ -77,7 +77,7 @@ processPayment($adapter, 100);
 | ✅ Flexibility | Swap in new adapters with ease                |
 
 
-**🧩 Example 1: Legacy Notification System**
+## **🧩 Example 1: Legacy Notification System**
 
 🛑 Problem:
 
@@ -105,7 +105,7 @@ class LegacyEmail {
 ```
 
 
-# 🔧 Adapter
+🔧 Adapter
 ```php
 class EmailAdapter implements NotificationInterface {
     protected $legacyEmail;
@@ -133,5 +133,59 @@ $adapter = new EmailAdapter($legacyEmail);
 
 notifyUser($adapter);
 // Output: Sending email to user@example.com: Welcome!
+
+```
+
+### **🧩 Example 2: Different Logger Implementations**
+
+🎯 Target Interface
+
+```php
+interface LoggerInterface {
+    public function log($message);
+}
+
+```
+
+🪵 Third-Party Logger (Incompatible)
+```php
+class ThirdPartyLogger {
+    public function writeToLog($text) {
+        echo "[ThirdPartyLog]: $text\n";
+    }
+}
+
+```
+
+🔧 Adapter
+
+```php
+class LoggerAdapter implements LoggerInterface {
+    protected $externalLogger;
+
+    public function __construct(ThirdPartyLogger $externalLogger) {
+        $this->externalLogger = $externalLogger;
+    }
+
+    public function log($message) {
+        $this->externalLogger->writeToLog($message);
+    }
+}
+
+```
+##
+
+✅ Usage
+
+```php
+function performLogging(LoggerInterface $logger) {
+    $logger->log("Something happened.");
+}
+
+$externalLogger = new ThirdPartyLogger();
+$adapterLogger = new LoggerAdapter($externalLogger);
+
+performLogging($adapterLogger);
+// Output: [ThirdPartyLog]: Something happened.
 
 ```
